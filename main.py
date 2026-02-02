@@ -19,3 +19,10 @@ except ImportError:
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ARTIFACT_PATH = PROJECT_ROOT / "artifacts" / "contracts" / "Trufflr.sol" / "Trufflr.json"
 
+
+def compile_contract():
+    if ARTIFACT_PATH.exists():
+        return True
+    print("Compiling (npx hardhat compile)...")
+    r = subprocess.run(
+        ["npx", "hardhat", "compile"],
