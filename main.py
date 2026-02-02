@@ -5,3 +5,10 @@ Uses web3.py; compile with Hardhat first. Set RPC_URL and DEPLOYER_PRIVATE_KEY t
 """
 
 import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+try:
+    from web3 import Web3
