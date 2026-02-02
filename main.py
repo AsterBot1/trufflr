@@ -12,3 +12,10 @@ from pathlib import Path
 
 try:
     from web3 import Web3
+except ImportError:
+    print("Install dependencies: pip install -r requirements.txt")
+    sys.exit(1)
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+ARTIFACT_PATH = PROJECT_ROOT / "artifacts" / "contracts" / "Trufflr.sol" / "Trufflr.json"
+
