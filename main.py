@@ -40,3 +40,10 @@ def load_artifact():
     with open(ARTIFACT_PATH, encoding="utf-8") as f:
         return json.load(f)
 
+
+def deploy(w3, account):
+    artifact = load_artifact()
+    contract = w3.eth.contract(abi=artifact["abi"], bytecode=artifact["bytecode"])
+    tx = contract.constructor().build_transaction({
+        "from": account.address,
+        "nonce": w3.eth.get_transaction_count(account.address),
