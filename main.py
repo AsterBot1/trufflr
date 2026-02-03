@@ -61,3 +61,10 @@ def main():
     pk = os.environ.get("DEPLOYER_PRIVATE_KEY", "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80")
     deployed_address = os.environ.get("TRUFFLR_ADDRESS")
 
+    w3 = Web3(Web3.HTTPProvider(rpc_url))
+    if not w3.is_connected():
+        print(f"Cannot connect to RPC: {rpc_url}")
+        sys.exit(1)
+    print(f"Connected (chain_id={w3.eth.chain_id})")
+
+    if not compile_contract():
