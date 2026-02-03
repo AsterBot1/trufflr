@@ -68,3 +68,10 @@ def main():
     print(f"Connected (chain_id={w3.eth.chain_id})")
 
     if not compile_contract():
+        print("Compilation failed.")
+        sys.exit(1)
+
+    artifact = load_artifact()
+    abi = artifact["abi"]
+
+    if deployed_address:
