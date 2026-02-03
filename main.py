@@ -26,3 +26,10 @@ def compile_contract():
     print("Compiling (npx hardhat compile)...")
     r = subprocess.run(
         ["npx", "hardhat", "compile"],
+        cwd=PROJECT_ROOT,
+        capture_output=True,
+        text=True,
+    )
+    if r.returncode != 0:
+        print(r.stderr or r.stdout)
+        return False
