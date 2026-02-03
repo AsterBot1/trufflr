@@ -75,3 +75,10 @@ def main():
     abi = artifact["abi"]
 
     if deployed_address:
+        addr = Web3.to_checksum_address(deployed_address)
+        print(f"Using existing Trufflr at {addr}")
+    else:
+        account = w3.eth.account.from_key(pk)
+        addr = deploy(w3, account)
+        print(f"Trufflr deployed at {addr}")
+
