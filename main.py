@@ -54,3 +54,10 @@ def deploy(w3, account):
     if receipt["status"] != 1:
         raise RuntimeError("Deploy tx failed")
     return receipt["contractAddress"]
+
+
+def main():
+    rpc_url = os.environ.get("RPC_URL", "http://127.0.0.1:8545")
+    pk = os.environ.get("DEPLOYER_PRIVATE_KEY", "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80")
+    deployed_address = os.environ.get("TRUFFLR_ADDRESS")
+
