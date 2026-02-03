@@ -33,3 +33,10 @@ def compile_contract():
     if r.returncode != 0:
         print(r.stderr or r.stdout)
         return False
+    return ARTIFACT_PATH.exists()
+
+
+def load_artifact():
+    with open(ARTIFACT_PATH, encoding="utf-8") as f:
+        return json.load(f)
+
